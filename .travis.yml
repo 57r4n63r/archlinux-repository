@@ -1,13 +1,18 @@
 sudo: required
 language: generic
 services:
-  - docker
-install:
+- docker
+install: 
 script:
-  - make container
-  - make run
+- make container
+- make run
 git:
   depth: false
 cache:
   directories:
-    - mirror
+  - mirror
+before_install:
+- openssl aes-256-cbc -K $encrypted_2073c360cfd8_key -iv $encrypted_2073c360cfd8_iv
+  -in repository.yml.enc -out ./repository.yml -d
+- openssl aes-256-cbc -K $encrypted_2073c360cfd8_key -iv $encrypted_2073c360cfd8_iv
+  -in deploy_key.enc -out ./deploy_key -d
