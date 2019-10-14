@@ -13,8 +13,7 @@ Server = https://mirror.nucl3on.com
 
 Package	|  Version	|  Modification
 :--- | :--- | :---
-*dwm*<br>A dynamic window manager for X | 6.2 | 14 Oct 2019
 *dwm-status*<br>Status bar for dwm | 1.0.0 | 14 Oct 2019
-*firefox-nightly*<br>Standalone Web Browser from Mozilla — Nightly build (en-US) | 71.0a1.20191014 | 14 Oct 2019
+*siji-git*<br>Iconic bitmap font based on stlarch with additional glyphs | r23.c691f20 | 14 Oct 2019
 *st*<br>A simple virtual terminal emulator for X. | 0.8.2 | 14 Oct 2019
 
