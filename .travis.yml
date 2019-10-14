@@ -12,6 +12,10 @@ cache:
   directories:
   - mirror
 before_install:
+- openssl aes-256-cbc -K $encrypted_3f01c25f3d95_key -iv $encrypted_3f01c25f3d95_iv
+  -in deploy_key.enc -out ./deploy_key -d
+- openssl aes-256-cbc -K $encrypted_3f01c25f3d95_key -iv $encrypted_3f01c25f3d95_iv
+  -in repository.yml.enc -out ./repository.yml -d
 - openssl aes-256-cbc -K $encrypted_2073c360cfd8_key -iv $encrypted_2073c360cfd8_iv
   -in repository.yml.enc -out ./repository.yml -d
 - openssl aes-256-cbc -K $encrypted_2073c360cfd8_key -iv $encrypted_2073c360cfd8_iv
