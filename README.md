@@ -14,4 +14,5 @@ Server = https://mirror.nucl3on.com
 Package	|  Version	|  Modification
 :--- | :--- | :---
 *dwm-status*<br>Status bar for dwm | 1.0.0 | 14 Oct 2019
+*st*<br>A simple virtual terminal emulator for X. | 0.8.2 | 14 Oct 2019
 
