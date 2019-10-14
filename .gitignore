@@ -28,3 +28,4 @@ sample.yml
 *.xz
 *.zip
 !log/*.log
+!/secrets.tar.enc
