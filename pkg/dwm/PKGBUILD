@@ -44,3 +44,5 @@ package() {
   install -m644 -D README "$pkgdir/usr/share/doc/$pkgname/README"
   install -m644 -D ../dwm.desktop "$pkgdir/usr/share/xsessions/dwm.desktop"
 }
+
+# vim:set ts=2 sw=2 et:
