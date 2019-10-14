@@ -1,0 +1,30 @@
+--- PKGBUILD	2019-07-21 15:51:31.296153454 -0400
++++ PKGBUILD.new	2019-07-21 17:29:05.993048870 -0400
+@@ -1,4 +1,4 @@
+-pkgname=dwm-git
++pkgname=dwm
+ _pkgname=dwm
+ pkgver=6.2
+ pkgrel=1
+@@ -14,8 +14,10 @@
+ conflicts=('dwm')
+ epoch=1
+ source=(dwm.desktop
++        config.h
+         "$_pkgname::git+http://git.suckless.org/dwm")
+ md5sums=('939f403a71b6e85261d09fc3412269ee'
++         'SKIP'
+          'SKIP')
+
+ pkgver(){
+@@ -25,8 +27,8 @@
+
+ prepare() {
+   cd $_pkgname
+-  if [[ -f "$SRCDEST/$pkgname/config.h" ]]; then
+-    cp -f "$SRCDEST/$pkgname/config.h" config.h
++  if [[ -f "$SRCDEST/config.h" ]]; then
++    cp -f "$SRCDEST/config.h" config.h
+   fi
+ }
+
