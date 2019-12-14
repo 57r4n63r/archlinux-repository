@@ -6,10 +6,15 @@ import os
 name = "dwm"
 source = "https://aur.archlinux.org/dwm-git.git"
 keep_files = [
-    "config.h",
-    "dwm.patch"
+    "config.def.h"
 ]
 
 
 def pre_build():
-    os.system("patch < dwm.patch")
+    os.system("cp config.def.h config.h")
+
+    for line in edit_file("PKGBUILD"):
+        if line.startswith("pkgname="):
+            print("pkgname=dwm")
+        else:
+            print(line)
