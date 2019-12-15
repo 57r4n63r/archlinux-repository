@@ -16,6 +16,7 @@ Package	|  Version	|  Modification
 *discord*<br>All-in-one voice and text chat for gamers that's free and secure. | 0.0.9 | 14 Oct 2019
 *dwm*<br>A dynamic window manager for X | 6.2.r0.gcb3f58a | 14 Dec 2019
 *dwm-status*<br>Status bar for dwm | 2.0.1 | 14 Dec 2019
+*firefox-nightly*<br>Standalone Web Browser from Mozilla — Nightly build (en-US) | 73.0a1.20191215 | 15 Dec 2019
 *nordvpn*<br>NordVPN CLI tool for Linux | 3.5.0_1 | 09 Dec 2019
 *siji-git*<br>Iconic bitmap font based on stlarch with additional glyphs | r23.c691f20 | 14 Oct 2019
 *st*<br>A simple virtual terminal emulator for X. | 0.8.2 | 18 Nov 2019
