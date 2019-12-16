@@ -4,10 +4,8 @@ services:
 - docker
 install:
 script:
-- make container
-- make run
-git:
-  depth: false
+  - make container
+  - make run
 cache:
   directories:
   - mirror

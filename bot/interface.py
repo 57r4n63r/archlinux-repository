@@ -7,6 +7,7 @@ See the file 'LICENSE' for copying permission
 
 import os
 import base64
+import subprocess
 
 from core.settings import IS_DEVELOPMENT
 from core.settings import IS_TRAVIS
@@ -40,65 +41,50 @@ class Interface():
     markdown_table_tr = "*$name*<br>$description | $version | $date\n"
 
     def create(self):
-        conf.packages.sort()
+        self._execute("sudo pacman -Sy")
 
-        for package in conf.packages:
-            module = paths.pkg + "/" + package
+        packages = output("pacman -Slq %s | sort" % conf.db).split("\n")
 
-            try:
-                open(module + "/PKGBUILD")
-            except FileNotFoundError:
-                continue
-
-            schema = self.get_schema(module)
-            date = self.get_last_change(module)
-            version = schema["version"]
+        for name in packages:
+            schema = self._get_schema(name)
             description = schema["description"]
+            version = schema["version"]
+            date = schema["date"]
+            path = self._get_file_location(name, version)
 
-            for name in schema["name"].split(" "):
-                path = self.get_package_file(name, schema)
+            for prefix in ["html", "markdown"]:
+                tr = getattr(self, prefix + "_table_tr")
+                tr = tr.replace("$path", path)
+                tr = tr.replace("$name", name)
+                tr = tr.replace("$date", date)
+                tr = tr.replace("$version", version)
 
-                if path:
-                    description = self.get_description(package, name, description)
+                if prefix == "markdown":
+                    description = description.replace("\\", "\\\\")
+                    description = description.replace("*", "\*")
+                    description = description.replace("_", "\_")
+                    description = description.replace("|", "\|")
 
-                    for prefix in ["html", "markdown"]:
-                        tr = getattr(self, prefix + "_table_tr")
-                        tr = tr.replace("$path", path)
-                        tr = tr.replace("$name", name)
-                        tr = tr.replace("$date", date)
-                        tr = tr.replace("$version", version)
+                tr = tr.replace("$description", description)
 
-                        if prefix == "markdown":
-                            description = description.replace("\\", "\\\\")
-                            description = description.replace("*", "\*")
-                            description = description.replace("_", "\_")
-                            description = description.replace("|", "\|")
-
-                        tr = tr.replace("$description", description)
-
-                        tbody = getattr(self, prefix + "_table_tbody")
-                        setattr(self, prefix + "_table_tbody", tbody + tr)
+                tbody = getattr(self, prefix + "_table_tbody")
+                setattr(self, prefix + "_table_tbody", tbody + tr)
 
         # Create html mirror
         if remote_repository():
-            self.move_to_mirror()
-            self.replace_html_variables()
-            self.compress()
+            self._move_to_mirror()
+            self._replace_html_variables()
+            self._compress()
 
         # Creade README.md
         if update_disabled("readme"):
             return
 
-        self.move_to_root()
-        self.replace_markdown_variables()
-        self.commit_readme()
+        self._move_to_root()
+        self._replace_markdown_variables()
+        self._commit_readme()
 
-    def get_last_change(self, path):
-        last_change = output("git log -1 --format='%at' -- " + path)
-        timestamp = datetime.fromtimestamp(int(last_change))
-        return timestamp.strftime("%d %h %Y")
-
-    def commit_readme(self):
+    def _commit_readme(self):
         path = paths.base + "/README.md"
         packages = []
 
@@ -116,50 +102,54 @@ class Interface():
         git commit -m "{commit_msg}";
         """)
 
-    def get_schema(self, path):
-        if not os.path.isfile(path + "/PKGBUILD"):
-            return
+    def _get_schema(self, name):
+        schema = {}
+        is_package = False
+        lines = output("pacman -Si %s" % name).split("\n")
+        keys = {
+            "repository": "Repository",
+            "description": "Description",
+            "version": "Version",
+            "date": "Build Date",
+        }
 
-        epoch = extract(path, "epoch")
+        for line in lines:
+            if is_package is False:
+                if line.startswith(keys["repository"]) and  self._strip_key(line) == conf.db:
+                    is_package = True
+            else:
+                for key in keys:
+                    if line.startswith(keys[key]):
+                        schema[key] = self._strip_key(line)
 
-        if epoch:
-            epoch += ":"
+                        if key == "date":
+                            parameters = schema[key].split(" ")
+                            schema[key] = parameters[1] + " " + parameters[2] + " " + parameters[3]
 
-        return dict(
-            description=extract(path, "pkgdesc"),
-            version=extract(path, "pkgver"),
-            name=extract(path, "pkgname"),
-            epoch=epoch
-        )
+                if line == "":
+                    is_package = False
 
-    def get_package_file(self, name, schema):
-        path = name + "-" + schema["epoch"] + schema["version"] + "-"
+        return schema
+
+    def _strip_key(self, value):
+        return ":".join(value.split(":")[1:]).strip()
+
+    def _get_file_location(self, name, version):
+        path = name + "-" + version
 
         for location in os.listdir(paths.mirror):
             if location.startswith(path):
                 return location
 
-    def get_description(self, package, name, default):
-        search = False
-        description = default
+        return ""
 
-        for line in open(f"{paths.pkg}/{package}/PKGBUILD"):
-            line = line.strip()
-            if line.startswith("package_" + name + "()"):
-                search = True
-            elif line.startswith("pkgdesc=") and search:
-                description = line.replace("pkgdesc=", "")[1:-1]
-                break
-
-        return description
-
-    def move_to_mirror(self):
+    def _move_to_mirror(self):
         os.system(f"cp {paths.www}/template.html {paths.mirror}/index.html")
 
-    def move_to_root(self):
+    def _move_to_root(self):
         os.system(f"cp {paths.www}/template.md {paths.base}/README.md")
 
-    def replace_markdown_variables(self):
+    def _replace_markdown_variables(self):
         remote_path = self._get_remote_path()
 
         if not remote_repository():
@@ -178,7 +168,7 @@ class Interface():
 
             print(line)
 
-    def replace_html_variables(self):
+    def _replace_html_variables(self):
         remote_path = 'https://' + git_remote_path().rstrip('.git')
 
         for line in edit_file(paths.mirror + "/index.html"):
@@ -196,7 +186,7 @@ class Interface():
 
             print(line)
 
-    def compress(self):
+    def _compress(self):
         content = get_compressed_file(paths.mirror + "/index.html")
 
         with open(paths.mirror + "/index.html", "w") as f:
@@ -206,6 +196,14 @@ class Interface():
         remote_path = git_remote_path()
         host = remote_path[:remote_path.find("/") + 1]
         return remote_path.rstrip('.git').strip(host)
+
+    def _execute(self, commands):
+        subprocess.run(
+            commands,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            shell=True
+        )
 
 
 def get_base64(path):
