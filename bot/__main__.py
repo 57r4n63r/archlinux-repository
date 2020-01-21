@@ -2,7 +2,7 @@
 
 """
 Copyright (c) Build Your Own Arch Linux Repository developers
-See the file 'LICENSE' uor copying permission
+See the file 'LICENSE' for copying permission
 """
 
 from environment import environment
@@ -32,20 +32,20 @@ def main():
         validator.requirements,
         validator.files,
         validator.travis,
-        validator.content,
         validator.configs,
         environment.prepare_ssh,
-        validator.connection
+        validator.connection,
+        validator.content
     ])
 
     runner.set("build", [
         validator.requirements,
         validator.files,
         validator.travis,
-        validator.content,
         validator.configs,
         environment.prepare_ssh,
         validator.connection,
+        validator.content,
         environment.prepare_git,
         environment.prepare_mirror,
         environment.prepare_pacman,

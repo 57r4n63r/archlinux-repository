@@ -13,16 +13,16 @@ from utils.process import git_remote_path
 # Bot version (<major>.<minor>.<month>.<monthly commit>)
 # To get the monthly commit, you need to execute
 # git rev-list --count HEAD --since="2019-07-01"
-VERSION = "1.0.7.61"
+VERSION = "1.1.1.14"
 
 # Upstream repository
-UPSTREAM_REPOSITORY = "https://github.com/unix-development/build-your-own-archlinux-repository"
+UPSTREAM_REPOSITORY = "https://github.com/unix-development/build-ar"
 
 # Current repository
 CURRENT_REPOSITORY = "https://" + git_remote_path().rstrip(".git")
 
 # Check if it's upstream repository
-IS_DEVELOPMENT = (CURRENT_REPOSITORY is UPSTREAM_REPOSITORY)
+IS_DEVELOPMENT = (CURRENT_REPOSITORY == UPSTREAM_REPOSITORY)
 
 # Define if it's Travis-CI
 IS_TRAVIS = ("TRAVIS" in os.environ and os.environ["TRAVIS"] != "")
