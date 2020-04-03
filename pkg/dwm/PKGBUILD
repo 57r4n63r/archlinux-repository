@@ -1,6 +1,6 @@
 pkgname=dwm
 _pkgname=dwm
-pkgver=6.2.r0.gcb3f58a
+pkgver=6.2.r1.gc82db69
 pkgrel=1
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
