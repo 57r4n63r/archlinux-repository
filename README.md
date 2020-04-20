@@ -20,7 +20,7 @@ Server = https://mirror.nucl3on.com
 Package	|  Version	|  Modification
 :--- | :--- | :---
 *discord*<br>All-in-one voice and text chat for gamers that's free and | 0.0.9-3 | 14 Oct 2019
-*dwm*<br>A dynamic window manager for X | 6.2.r1.gc82db69-1 | 03 Apr 2020
+*dwm*<br>A dynamic window manager for X | 6.2.r2.ga8e9513-1 | 20 Apr 2020
 *dwm-status*<br>Status bar for dwm | 2.0.3-1 | 16 Dec 2019
 *firefox-nightly*<br>Standalone Web Browser from Mozilla — Nightly build (en-US) | 77.0a1.20200419-1 | 19 Apr 2020
 *nordvpn*<br>NordVPN CLI tool for Linux | 3.7.1-1 | 17 Apr 2020
