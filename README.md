@@ -23,7 +23,7 @@ Package	|  Version	|  Modification
 *dwm*<br>A dynamic window manager for X | 6.2.r5.gf09418b-1 | 25 Apr 2020
 *dwm-status*<br>Status bar for dwm | 2.0.3-1 | 16 Dec 2019
 *firefox-nightly*<br>Standalone Web Browser from Mozilla — Nightly build (en-US) | 78.0a1.20200601-1 | 01 Jun 2020
-*nordvpn*<br>NordVPN CLI tool for Linux | 3.7.2-2 | 12 May 2020
+*nordvpn*<br>NordVPN CLI tool for Linux | 3.7.3-1 | 03 Jun 2020
 *siji-git*<br>Iconic bitmap font based on stlarch with additional glyphs | r23.c691f20-1 | 14 Oct 2019
 *st*<br>A simple virtual terminal emulator for X. | 0.8.3-1 | 29 Apr 2020
 
