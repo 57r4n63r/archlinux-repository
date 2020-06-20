@@ -25,5 +25,5 @@ Package	|  Version	|  Modification
 *firefox-nightly*<br>Standalone Web Browser from Mozilla — Nightly build (en-US) | 79.0a1.20200619-1 | 19 Jun 2020
 *nordvpn*<br>NordVPN CLI tool for Linux | 3.7.3-1 | 03 Jun 2020
 *siji-git*<br>Iconic bitmap font based on stlarch with additional glyphs | r23.c691f20-1 | 14 Oct 2019
-*st*<br>A simple virtual terminal emulator for X. | 0.8.3-1 | 29 Apr 2020
+*st*<br>A simple virtual terminal emulator for X. | 0.8.4-1 | 20 Jun 2020
 
