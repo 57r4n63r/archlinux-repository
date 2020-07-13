@@ -22,7 +22,7 @@ Package	|  Version	|  Modification
 *discord*<br>All-in-one voice and text chat for gamers that's free and | 0.0.9-3 | 14 Oct 2019
 *dwm*<br>A dynamic window manager for X | 6.2.r7.gbb2e722-1 | 08 Jul 2020
 *dwm-status*<br>Status bar for dwm | 2.0.3-1 | 16 Dec 2019
-*firefox-nightly*<br>Standalone Web Browser from Mozilla — Nightly build (en-US) | 79.0a1.20200629-1 | 29 Jun 2020
+*firefox-nightly*<br>Standalone Web Browser from Mozilla — Nightly build (en-US) | 80.0a1.20200712-1 | 12 Jul 2020
 *nordvpn*<br>NordVPN CLI tool for Linux | 3.7.4-1 | 30 Jun 2020
 *siji-git*<br>Iconic bitmap font based on stlarch with additional glyphs | r23.c691f20-2 | 07 Jul 2020
 *st*<br>A simple virtual terminal emulator for X. | 0.8.4-1 | 20 Jun 2020
