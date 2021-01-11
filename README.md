@@ -19,5 +19,6 @@ Server = https://mirror.nucl3on.com
 ## Repository
 Package	|  Version	|  Modification
 :--- | :--- | :---
+*dwm*<br>A dynamic window manager for X | 6.2.r8.g61bb8b2-1 | 11 Jan 2021
 *dwm-status*<br>Status bar for dwm | 2.0.5-1 | 11 Jan 2021
 
