@@ -151,7 +151,7 @@ class Repository():
                 --nocolor \
                 --remove \
                 {paths.mirror}/{conf.db}.db.tar.gz \
-                {paths.mirror}/{name}-{version}-*.pkg.tar.xz
+                {paths.mirror}/{name}-{version}-*.pkg.tar.zst
             """)
 
     def deploy(self):
@@ -607,7 +607,7 @@ class Package():
         shutil.rmtree(path)
 
         if conf.environment == "prod" and exit_code == 0:
-            self._execute("mv *.pkg.tar.xz %s" % paths.mirror)
+            self._execute("mv *.pkg.tar.zst %s" % paths.mirror)
 
         return exit_code == 0
 
