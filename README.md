@@ -22,4 +22,5 @@ Package	|  Version	|  Modification
 *dwm*<br>A dynamic window manager for X | 6.2.r8.g61bb8b2-1 | 11 Jan 2021
 *dwm-status*<br>Status bar for dwm | 2.0.5-1 | 11 Jan 2021
 *siji-git*<br>Iconic bitmap font based on stlarch with additional glyphs | r23.c691f20-2 | 11 Jan 2021
+*st*<br>A simple virtual terminal emulator for X. | 0.8.4-1 | 11 Jan 2021
 
