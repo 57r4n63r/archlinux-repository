@@ -22,7 +22,7 @@ Package	|  Version	|  Modification
 *dwm*<br>A dynamic window manager for X | 6.2.r8.g61bb8b2-1 | 11 Jan 2021
 *dwm-status*<br>Status bar for dwm | 2.0.5-1 | 11 Jan 2021
 *factorio-headless*<br>A 2D game about building and maintaining factories - Server | 1.0.0-2 | 14 Jan 2021
-*firefox-nightly*<br>Standalone Web Browser from Mozilla — Nightly build (en-US) | 86.0a1.20210124-1 | 24 Jan 2021
+*firefox-nightly*<br>Standalone Web Browser from Mozilla — Nightly build (en-US) | 86.0a1.20210125-1 | 26 Jan 2021
 *siji-git*<br>Iconic bitmap font based on stlarch with additional glyphs | r23.c691f20-2 | 11 Jan 2021
 *st*<br>A simple virtual terminal emulator for X. | 0.8.4-1 | 11 Jan 2021
 
